@@ -1,0 +1,14 @@
+{% macro stats_cell(value, hl) %}
+  <td{% if hl %} class="warning"{% endif %}>{{ value }}</td>
+{% endmacro %}
+
+{% macro stats_row(name, assist, rebound, point, steal, block, hl) %}
+  <tr>
+    <td>{{ name }}</td>
+    {{ stats_cell(assist, assist >= hl) }}
+    {{ stats_cell(rebound, rebound >= hl) }}
+    {{ stats_cell(point, point >= hl) }}
+    {{ stats_cell(steal, steal >= hl) }}
+    {{ stats_cell(block, block >= hl) }}
+  </tr>
+{% endmacro %}

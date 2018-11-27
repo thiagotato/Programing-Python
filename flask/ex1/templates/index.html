@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% import 'macros.html' as macros %}
+
+{% block title %}Player Stats {{ Name }}{% endblock %}
+
+{% block page_content %}
+  <h1>Player Stats</h1>
+  <h2>{{ name }}</h2>
+  <table class="table table-hover">
+    <tr>
+      <th>Assists</th>
+      <th>Rebounds</th>
+      <th>Points</th>
+      <th>Steals</th>
+      <th>Blocks</th>
+    </tr>
+    {% for player in players %}
+        {{ macros.stats_row(player,
+                            stats[player]['Assist'],
+                            stats[player]['Rebounds'],
+                            stats[player]['Points'],
+                            stats[player]['Steals'],
+                            stats[player]['Blocks'],
+                            hl
+                            )}}
+    {% endfor %}
+    </table>
+{% endblock %}
